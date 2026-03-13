@@ -186,7 +186,7 @@ static void draw_game_over(Canvas* canvas, DeathRollState* s) {
 
     canvas_set_font(canvas, FontSecondary);
     snprintf(buf, sizeof(buf), "Total rolls: %" PRIu32, s->total_rolls);
-    canvas_draw_str_aligned(canvas, 64, 50, AlignCenter, AlignTop, buf);
+    canvas_draw_str_aligned(canvas, 64, 48, AlignCenter, AlignTop, buf);
 
     canvas_draw_str_aligned(canvas, 64, 62, AlignCenter, AlignBottom, "OK: Again  Back: Menu");
 }

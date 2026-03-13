@@ -7,9 +7,10 @@ A two-player "Death Roll" dice game for the Flipper Zero. Players take turns rol
 ### Prerequisites
 
 - Install [ufbt](https://github.com/flipperdevices/flipperzero-ufbt):
-  ```bash
-  pip install ufbt
-  ```
+
+```bash
+pip install ufbt
+```
 
 ### Build
 
