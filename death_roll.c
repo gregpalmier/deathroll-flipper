@@ -99,7 +99,7 @@ static void draw_menu(Canvas* canvas) {
     canvas_draw_str_aligned(canvas, 64, 44, AlignCenter, AlignTop, "Press OK to Play");
 
     canvas_set_font(canvas, FontSecondary);
-    canvas_draw_str_aligned(canvas, 64, 58, AlignCenter, AlignTop, "Press Back to Quit");
+    canvas_draw_str_aligned(canvas, 64, 55, AlignCenter, AlignTop, "Press Back to Quit");
 }
 
 static void draw_game(Canvas* canvas, DeathRollState* s) {
@@ -145,21 +145,22 @@ static void draw_game(Canvas* canvas, DeathRollState* s) {
 
         // History list
         canvas_set_font(canvas, FontSecondary);
-        uint8_t y = 30;
-        uint8_t shown = (s->history_count < 4) ? s->history_count : 4;
-        for(uint8_t i = 0; i < shown; i++) {
+        uint8_t shown = (s->history_count < HISTORY_SIZE) ? s->history_count : HISTORY_SIZE;
+        for(uint8_t entry_index = 0; entry_index < shown; entry_index++) {
+            uint8_t column_index = entry_index / 3;
+            uint8_t row_index = entry_index % 3;
+            uint8_t x_position = (column_index == 0) ? 4 : 66;
+            uint8_t y_position = 34 + row_index * 8;
             snprintf(
                 buf,
                 sizeof(buf),
                 "#%" PRIu32 "  P%" PRIu8 ": %" PRIu32,
-                s->total_rolls - i,
-                s->history[i].player,
-                s->history[i].value);
-            canvas_draw_str(canvas, 4, y, buf);
-            y += 9;
+                s->total_rolls - entry_index,
+                s->history[entry_index].player,
+                s->history[entry_index].value);
+            canvas_draw_str(canvas, x_position, y_position, buf);
         }
 
-        // Bottom prompt
         canvas_set_font(canvas, FontSecondary);
         snprintf(
             buf,
