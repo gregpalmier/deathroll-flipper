@@ -9,12 +9,15 @@ A two-player "Death Roll" dice game for the Flipper Zero. Players take turns rol
 - Install [ufbt](https://github.com/flipperdevices/flipperzero-ufbt):
 
 ```bash
-pip install ufbt
+python3 -m pip install --upgrade ufbt
 ```
 
 ### Build
 
+Update the SDK to the latest official release, then build:
+
 ```bash
+ufbt update
 ufbt
 ```
 
